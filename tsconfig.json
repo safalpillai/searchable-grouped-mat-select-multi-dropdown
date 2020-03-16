@@ -16,11 +16,13 @@
     ],
     "lib": [
       "es2018",
-      "dom"
+      "dom",
+      "ES2019",
     ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "disableTypeScriptVersionCheck": true,
   }
 }

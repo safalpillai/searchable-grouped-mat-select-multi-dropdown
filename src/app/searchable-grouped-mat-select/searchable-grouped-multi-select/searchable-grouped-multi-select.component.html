@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup">
+    <mat-form-field>
+        <mat-select formControlName="multiSelector" (selectionChange)="selectionChanged($event)" [placeholder]="title | titlecase" multiple>
+            <!-- search textbox -->
+            <mat-option>
+                <ngx-mat-select-search [placeholderLabel]="'Search'" [noEntriesFoundLabel]="'No matches'" formControlName="search"></ngx-mat-select-search>
+            </mat-option>
+            <!-- ungrouped dropdowns -->
+            <ng-container *ngIf="!grouping; else grouped">
+                <mat-option *ngFor="let instance of dropdownEntries" [value]="instance.ComponentValue">
+                    {{ instance.ComponentText }}
+                </mat-option>
+            </ng-container>
+            <!-- grouoped dropdowns -->
+            <ng-template #grouped>
+                <ng-container *ngIf="groupedDropdownEntries?.length">
+                    <mat-optgroup *ngFor="let group of groupedDropdownEntries" [label]="group.name">
+                        <mat-option *ngFor="let entry of group.iterables" [value]="entry.value">
+                            {{ entry.text }}
+                        </mat-option>
+                    </mat-optgroup>
+                </ng-container>
+            </ng-template>
+        </mat-select>
+    </mat-form-field>
+</form>
