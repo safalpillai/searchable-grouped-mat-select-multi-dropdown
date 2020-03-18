@@ -7,8 +7,8 @@
             </mat-option>
             <!-- ungrouped dropdowns -->
             <ng-container *ngIf="!grouping; else grouped">
-                <mat-option *ngFor="let instance of dropdownEntries" [value]="instance.ComponentValue">
-                    {{ instance.ComponentText }}
+                <mat-option *ngFor="let instance of dropdownEntries" [value]="instance.value">
+                    {{ instance.text }}
                 </mat-option>
             </ng-container>
             <!-- grouoped dropdowns -->

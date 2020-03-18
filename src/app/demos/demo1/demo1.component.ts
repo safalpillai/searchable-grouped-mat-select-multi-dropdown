@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IDropdownEntries } from 'src/app/searchable-grouped-mat-select/common.model';
 
 @Component({
     selector: 'app-demo1',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./demo1.component.scss']
 })
 export class Demo1Component implements OnInit {
-    dropdownEntries = [
+    dropdownEntries: Array<IDropdownEntries> = [
         { value: 'vader', text: 'Darth Vader' },
         { value: 'rey', text: 'Rey Skywalker' },
         { value: 'kylo', text: 'Kylo Ren' },
@@ -18,6 +19,10 @@ export class Demo1Component implements OnInit {
     }
 
     ngOnInit() {
+    }
+
+    unGroupedSelection(matSelectValues) {
+        console.log('Grouped selection output - ', matSelectValues)
     }
 
 }
