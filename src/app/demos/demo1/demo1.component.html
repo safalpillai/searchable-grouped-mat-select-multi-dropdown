@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-12">
+        <h3>Multi dropdown</h3>
+    </div>
+    <div class="col-12 form-group">
+        <app-searchable-grouped-multi-select 
+            (ungroupedChange)="unGroupedSelection($event)" 
+            [title]="'Choose favorite'"
+            [dropdownEntries]="dropdownEntries">
+        </app-searchable-grouped-multi-select>
+    </div>
+</div>
