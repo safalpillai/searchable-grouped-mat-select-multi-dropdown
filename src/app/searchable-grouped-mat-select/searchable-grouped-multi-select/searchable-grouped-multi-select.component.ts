@@ -73,7 +73,7 @@ export class SearchableGroupedMultiSelectComponent implements OnInit, OnDestroy 
         this._onDestroy.complete();
     }
 
-    // emit events to parent => ISearchOutput: {selections: string[]}
+    // emit events to parent => ISearchOutput: {selections: string[], unselections?: string[]}
     selectionChanged(event) {
         // extract selected/unselected privileges
         if (this.grouping) {
@@ -85,8 +85,8 @@ export class SearchableGroupedMultiSelectComponent implements OnInit, OnDestroy 
 
     private filterDropdown() {
         // if iterables are empty do nothing
-        if (!this.dropdownEntries && !this.grouping) return;
-        if (!this.groupedDropdownEntries && this.grouping) return;
+        if (!this.dropdownEntries.length && !this.grouping) return;
+        if (!this.groupedDropdownEntries.length && this.grouping) return;
         let searchQuery = this.searchTextbox.value;
         if (searchQuery) {
             // return grouped filtered entries
@@ -117,8 +117,8 @@ export class SearchableGroupedMultiSelectComponent implements OnInit, OnDestroy 
             }
         } else {
             // reinsert dropdown entries on search clear
-            if (this.grouping) this.groupedDropdownEntries = this.copyOfGroupedDropdownEntries;
-            else this.dropdownEntries = this.copyOfDropdownEntries;
+            if (this.grouping) this.groupedDropdownEntries = this.copyOfGroupedDropdownEntries?.slice();
+            else this.dropdownEntries = this.copyOfDropdownEntries?.slice();
         }
     }
 }
